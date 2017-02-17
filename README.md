@@ -1,6 +1,11 @@
 # kristine
 Personal assistant
 
-I'm making this with VOCE - the Java Speech API.  All licenses and appropriate files with their libraries will be included.
+Kristine is Copyright (C) 2017 Eric Sund
 
-JUST THROWING THIS HERE AT THE MOMENT
+This project makes use of the Voce JSAPI library (C) 2005 Tyler Streeter
+Please see license-BSD.txt for more details
+
+TODO
+- Switch to text input capability
+- Actually do useful stuff
