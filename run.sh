@@ -1,1 +1,1 @@
-java -classpath .:../../../lib/voce.jar -mx256m kristineVoice
+java -classpath .:./lib/voce.jar -mx256m kristineVoice

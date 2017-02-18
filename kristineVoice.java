@@ -52,17 +52,19 @@ public class kristineVoice {
 		boolean change = false; //"switch" spoken to change to text input
 		boolean sleep = false;  //"sleep" spoken to quit Kristine
 
-		voce.SpeechInterface.synthesize("Hello, Kristine here.");
+		// voce.SpeechInterface.synthesize("Hello, Kristine here.");
 		try {Runtime.getRuntime().exec("figlet Kristine");}
 		catch (IOException e) {System.out.println(e);}
 
 		while (!sleep) { //Kristine is on
 
-			try {Thread.sleep(250);}
+			try {Thread.sleep(500);}
 			catch (InterruptedException e){}
 
 			//keep grabbing input
 			while (voce.SpeechInterface.getRecognizerQueueSize() > 0) {
+				System.out.println("READY\n");
+
 				//get a string from the queue that's in the grammar file
 				String s = voce.SpeechInterface.popRecognizedString();
 

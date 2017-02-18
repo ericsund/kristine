@@ -1,1 +1,1 @@
-javac -classpath ../../../lib/voce.jar kristineVoice.java
+javac -classpath ./lib/voce.jar kristineVoice.java
