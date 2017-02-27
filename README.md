@@ -1,5 +1,5 @@
 # Kristine
-Personal assistant
+Your personal assistant
 
 Kristine is Copyright (C) 2017 Eric Sund
 
