@@ -8,4 +8,4 @@ grammar digits;
 
 public <miscellaneous> = (sleep);
 
-public <numbers> = (switch | zero | one | two | three | four | five | six | seven | eight | nine | ten | eleven | twelve) * ;
+public <numbers> = (switch | weather) * ;

@@ -51,19 +51,22 @@ public class kristineVoice {
 
 		boolean change = false; //"switch" spoken to change to text input
 		boolean sleep = false;  //"sleep" spoken to quit Kristine
+		boolean speaking = true;
 
-		// voce.SpeechInterface.synthesize("Hello, Kristine here.");
 		try {Runtime.getRuntime().exec("figlet Kristine");}
 		catch (IOException e) {System.out.println(e);}
 
+		voce.SpeechInterface.synthesize("Hi, I'm Kristine.");
+
 		while (!sleep) { //Kristine is on
 
-			try {Thread.sleep(500);}
+			try {Thread.sleep(3000);}
 			catch (InterruptedException e){}
 
 			//keep grabbing input
-			while (voce.SpeechInterface.getRecognizerQueueSize() > 0) {
-				System.out.println("READY\n");
+			speaking = false;
+			System.out.println("Ready to go");
+			while (voce.SpeechInterface.getRecognizerQueueSize() > 0 && !speaking) {
 
 				//get a string from the queue that's in the grammar file
 				String s = voce.SpeechInterface.popRecognizedString();
@@ -73,29 +76,26 @@ public class kristineVoice {
 					sleep = true;
 				}
 
-				//When string has "switch"
-				if (-1 != s.indexOf("switch")) {
-					voce.SpeechInterface.synthesize("Switching to text input.");
-					System.out.println("Switching to text input.");
-					//sleep = true;
-				}
+				//When string has "weather"
+				if (-1 != s.indexOf("weather")) {
+					speaking = true;
+					voce.SpeechInterface.synthesize(s + " is currently in development.");
+					System.out.println("The weather is currently in development.");
+					speaking = false;
 
-				else {
-					System.out.println("You just spoke: " + s);
-					voce.SpeechInterface.synthesize("You just spoke " + s);
+					try {Thread.sleep(5000);}
+					catch (InterruptedException e){}
+
+					//clear out the queue
+					while (voce.SpeechInterface.getRecognizerQueueSize() > 0) {
+						voce.SpeechInterface.popRecognizedString();
+					}
 				}
 
 			}
 		}
 
-		//switch to text input
-		if (change == true) {
-			//end this application and start the text version
-			voce.SpeechInterface.destroy();
-			System.exit(0);
-		}
-
-		//switch wasn't spoken, so just end this application
+		//quit was spoken which makes sleep true, so end the application
 		voce.SpeechInterface.destroy();
 		System.exit(0);
 	}
