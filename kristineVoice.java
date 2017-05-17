@@ -76,7 +76,7 @@ public class kristineVoice {
 					sleep = true;
 				}
 
-				//When string has "weather"
+				//When string has weather
 				if (-1 != s.indexOf("weather")) {
 					speaking = true;
 					voce.SpeechInterface.synthesize(s + " is currently in development.");
